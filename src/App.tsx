@@ -8,11 +8,13 @@ import "./App.css"
 interface AppInterface {
   message: string
   value: string
+  loading: string
 }
 class App extends Component<{}, AppInterface> {
   state: AppInterface = {
     message: "",
     value: "",
+    loading: "not loading",
   }
   async componentDidMount() {
     const message = await contract.methods.message().call()
@@ -21,9 +23,15 @@ class App extends Component<{}, AppInterface> {
     })
   }
   onSubmit = async () => {
+    this.setState({
+      loading: "loading",
+    })
     const accounts = await web3.eth.getAccounts()
     await contract.methods.setMessage(this.state.value).send({
       from: accounts[0],
+    })
+    this.setState({
+      loading: "complete",
     })
   }
   render() {
@@ -32,6 +40,7 @@ class App extends Component<{}, AppInterface> {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>{this.state.message}</p>
+          <p>{this.state.loading}</p>
           <input
             value={this.state.value}
             onChange={event => this.setState({value: event.target.value})}
