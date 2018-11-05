@@ -1,16 +1,28 @@
 import React, {Component} from "react"
 import logo from "./logo.svg"
+import contract from "./contract"
 import "./App.css"
 
-class App extends Component {
+interface AppInterface {
+  message: string
+}
+class App extends Component<{}, AppInterface> {
+  state: AppInterface = {
+    message: "",
+  }
+  async componentDidMount() {
+    const message = await contract.methods.message().call()
+    console.log(message)
+    this.setState({
+      message,
+    })
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <p>{this.state.message}</p>
           <a
             className="App-link"
             href="https://reactjs.org"
