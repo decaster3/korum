@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {useState, Component} from "react"
 import logo from "./logo.svg"
 import contract from "./contract"
 import "./App.css"
