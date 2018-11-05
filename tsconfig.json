@@ -12,7 +12,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "strict": false
+    "strict": false,
+    "lib": ["dom", "es6", "dom.iterable", "scripthost"]
   },
   "include": ["src"]
 }
