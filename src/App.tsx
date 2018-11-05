@@ -16,16 +16,13 @@ class App extends Component<{}, AppInterface> {
   }
   async componentDidMount() {
     const message = await contract.methods.message().call()
-    console.log(message)
     this.setState({
       message,
     })
   }
-  // @ts-ignore
   onSubmit = async () => {
-    const accounts = await web3.eth.getAccounts
+    const accounts = await web3.eth.getAccounts()
     await contract.methods.setMessage(this.state.value).send({
-      // @ts-ignore
       from: accounts[0],
     })
   }
@@ -39,7 +36,7 @@ class App extends Component<{}, AppInterface> {
             value={this.state.value}
             onChange={event => this.setState({value: event.target.value})}
           />
-          <button onClick={}>Change message</button>
+          <button onClick={this.onSubmit}>Change message</button>
         </header>
       </div>
     )
