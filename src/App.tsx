@@ -30,6 +30,10 @@ class App extends Component<{}, AppInterface> {
     await contract.methods.setMessage(this.state.value).send({
       from: accounts[0],
     })
+    const message = await contract.methods.message().call()
+    this.setState({
+      message,
+    })
     this.setState({
       loading: "complete",
     })
