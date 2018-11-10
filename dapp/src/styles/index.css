@@ -1,14 +1,84 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-image: url("bg.png");
+  font-family: 'Montserrat', Roboto;
+  color: white;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.card{
+  padding-top: 50px;
+  font-family: 'Montserrat', Roboto;
+  color: white;
+  background-color: #1C1E24 !important;
+  width: 456px !important;
+  padding: 35px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.top-margin{
+  margin-top: 200px;
+}
+.title{
+  color: white;
+  font-family: 'Montserrat', Roboto;
+  font-size: 37px;
+  font-weight: 400;
+  position: absolute;
+  z-index: 9;
+}
+.card-text{
+  font-size: 12px;
+  opacity: 0.3;
+}
+.radius-button{
+  width: 250px;
+  height: 45px;
+  background-color: unset;
+  border-radius: 40px;
+  border: solid 1px rgba(255, 255, 255, 0.10);
+  color: white;
+  font-size: 13px;
+  margin-top: 30px;
+}
+.line{
+  height: 1px;
+  opacity: 0.1;
+  background-color: white;
+  margin-top: 50px;
+}
+a{
+  font-size: 14px;
+  opacity: 0.3;
+  color: white;
+  margin-top: 10px;
+}
+.tokens-int{
+  color: white;
+  font-family: 'Montserrat', Roboto;
+  font-size: 70px;
+  font-weight: 400;
+  text-align: right;
+  line-height: 74px;
+}
+.tokens-title{
+  font-family: 'Montserrat', Roboto;
+  text-align: right;
+  color: white;
+  font-size: 14px;
+  margin-top: 218px;
+}
+.ether-int{
+  color: white;
+  font-family: 'Montserrat', Roboto;
+  font-size: 70px;
+  font-weight: 400;
+  text-align: right;
+  line-height: 74px;
+  opacity: 0.3;
+}
+.ether-title{
+  font-family: 'Montserrat', Roboto;
+  text-align: right;
+  color: white;
+  opacity: 0.3;
+  font-size: 14px;
+  margin-top: 315px;
 }
