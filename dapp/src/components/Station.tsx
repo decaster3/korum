@@ -53,7 +53,7 @@ class Station extends Component<{}, StationInterface> {
                   </p>
                   <div className="d-flex justify-content-center">
                     <button className="radius-button">
-                      Burn tokens for energy
+                      Sell tokens
                     </button>
                   </div>
                   <a className="d-flex justify-content-center">or buy tokens</a>

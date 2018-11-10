@@ -38,23 +38,53 @@ class Consumer extends Component<{}, ConsumerInterface> {
 
   render() {
     return (
-      <div>
-        Offerings
-        {this.state.offerings.map(offering => (
-          <div className="card" key={offering.id}>
-            <p>Tokens: {offering.tokens}</p>
-            <p>Eth: {offering.eth}</p>
-            <button onClick={() => this.onBuy(offering)}>Buy</button>
+      <div className='row'>
+          <div className='col-2'>
           </div>
-        ))}
-        <hr />
-        History
-        {this.state.history.map(item => (
-          <div className="card" key={item.id}>
-            <p>Tokens: {item.tokens}</p>
-            <p>Eth: {item.eth}</p>
+          <div className="col-6">
+              <h5 className="title">Offerings</h5>
+              <div className="card-consumer mt-4">
+                  <div className="card-body">
+                      {this.state.offerings.map(offering => (
+                          <div className='d-flex flex-row wallet mb-3'>
+                              <div className='d-flex flex-column' key={offering.id}>
+                                  <div>
+                                      <span className='buy-token'>{offering.eth + ' eth'}</span>
+                                      <span className='green-descr ml-auto'>{offering.tokens + ' tokens'}</span>
+                                  </div>
+                                  <div>
+                                  <span className='descr'>12.03.2018 17:30</span>
+                                  </div>
+                              </div>
+                              <button onClick={() => this.onBuy(offering)} className='ml-auto p-2 align-self-center radius-button-operator'>Buy</button>
+                          </div>
+                      ))}
+                      <hr />
+                  </div>
+              </div>
           </div>
-        ))}
+          <div className='col-4 opacity'>
+              <h5 className="title">History</h5>
+              <div className="mt-4" >
+                  <div className="card-body">
+                      {this.state.history.map(item => (
+                          <div className='d-flex flex-row wallet mb-3'>
+                              <div className='d-flex flex-column' key={item.id}>
+                                  <div>
+                                      <span className='buy-token'>{item.eth + ' eth'}</span>
+                                      <span className='green-descr ml-auto'>{item.tokens + ' tokens'}</span>
+                                  </div>
+                                  <div>
+                                      <span className='descr'>12.03.2018 17:30</span>
+                                  </div>
+                              </div>
+                          </div>
+                      ))}
+                  </div>
+              </div>
+          </div>
+
+
       </div>
     )
   }

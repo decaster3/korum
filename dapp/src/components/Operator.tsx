@@ -25,13 +25,29 @@ class Operator extends Component<{}, OperatorInterface> {
 
   render() {
     return (
-      <div>
-        {this.state.stations.map(station => (
-          <div key={station}>
-            {station}{" "}
-            <button onClick={() => this.onConfirm(station)}>Confirm</button>
+      <div className='row'>
+          <div className="col-2">
           </div>
-        ))}
+          <div className="col-8">
+              <h5 className="title">Operator's aprovement</h5>
+              <div className="card-operator mt-4 w-100" style={{width: "18rem"}}>
+                  <div className="card-body">
+                  <p className="card-text">
+                      Some quick example text to build on the card title and make
+                      up the bulk of the card's content.
+                  </p>
+                  {this.state.stations.map(station => (
+                      <div className='d-flex flex-row wallet mb-3'>
+                          <div key={station}>
+                              <span className='w-60'> {station}{" "}</span>
+                              <span className='descr'>12.03.2018 17:30</span>
+                          </div>
+                          <button onClick={() => this.onConfirm(station)} className='radius-button-operator'>Confirm</button>
+                      </div>
+                  ))}
+                  </div>
+              </div>
+          </div>
       </div>
     )
   }
