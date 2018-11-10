@@ -8,6 +8,9 @@ nav{
   background-color: rgba(255, 255, 255, 0);
   height: 100px;
 }
+.logo-img{
+  padding-top: 15px;
+}
 .card{
   padding-top: 50px;
   font-family: 'Montserrat', Roboto;
@@ -79,6 +82,19 @@ a{
   color: white;
   font-size: 14px;
 }
+svg{
+  position: absolute;
+}
+circle:first-child{
+  stroke: #9d00ff;
+}
+circle:nth-child(2n+2){
+  stroke: #87e234;
+}
+.stats-title{
+  width: 350px;
+  height: 350px;
+}
 .ether-int{
   color: white;
   font-family: 'Montserrat', Roboto;
@@ -87,6 +103,20 @@ a{
   text-align: right;
   line-height: 74px;
   opacity: 0.3;
+  transition: 0.5s;
+}
+.stats{
+  margin-top: 290px;
+  margin-left: -150px;
+  width: 300px;
+}
+.ether-int:hover{
+  opacity: 1;
+  transition: 0.5s;
+}
+.ether-title:hover {
+  opacity: 1;
+  transition: 0.5s;
 }
 .ether-title{
   font-family: 'Montserrat', Roboto;
