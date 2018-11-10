@@ -1,5 +1,7 @@
 import React, {useState, Component} from "react"
 import web3 from "../web3"
+import load1 from "../styles/1.png"
+import load2 from "../styles/2.svg"
 import factory from "../contracts/factory"
 import station from "../contracts/station"
 
@@ -43,20 +45,33 @@ class Operator extends Component<{}, OperatorInterface> {
     return (
       <div className="row">
         {this.state.isStationsLoading ? (
-          <div>Loading</div>
+          <div className="d-flex w-100 align-items-center justify-content-center loader">
+            <div className="loader-form-sm position-relative">
+              <img className="load-img-1 d-block" src={load1} />
+              <img className="load-img-2 d-block" src={load2} />
+            </div>
+            <div className="position-relative">
+              <img className="load-img-1 d-block" src={load1} />
+              <img className="load-img-2 d-block" src={load2} />
+            </div>
+            <div className="loader-form-sm position-relative">
+              <img className="load-img-1 d-block" src={load1} />
+              <img className="load-img-2 d-block" src={load2} />
+            </div>
+          </div>
         ) : (
           <>
             <div className="col-2" />
             <div className="col-8">
-              <h5 className="title">Operator's aprovement</h5>
+              <h5 className="title-spec">Подтверждение управляющего органа</h5>
               <div
                 className="card-operator mt-4 w-100"
                 style={{width: "18rem"}}
               >
                 <div className="card-body">
                   <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Управляющая компания подтверждает станцию, после чего
+                    станция может начать добывать электроэнергию
                   </p>
                   {this.state.stations.map(station => (
                     <div className="d-flex flex-row wallet mb-3">

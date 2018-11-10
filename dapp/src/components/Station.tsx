@@ -3,6 +3,8 @@ import factory from "../contracts/factory"
 import tokensContract from "../contracts/tokens"
 import station from "../contracts/station"
 import web3 from "../web3"
+import load1 from "../styles/1.png"
+import load2 from "../styles/2.svg"
 import DonutChart from "react-svg-donut-chart"
 import {RouteComponentProps} from "react-router-dom"
 
@@ -28,7 +30,7 @@ interface StationPropsInterface {
 
 class Station extends Component<StationPropsInterface, StationInterface> {
   state: StationInterface = {
-    tokens: [],
+    tokens: 0,
     balanceEth: "",
     isStationExistLoading: false,
     isStationExist: StationState.UNKNOWN,
@@ -58,11 +60,6 @@ class Station extends Component<StationPropsInterface, StationInterface> {
       if (isApprovedStation) {
         this.setState({
           isStationExist: StationState.APPROVED,
-        })
-        this.sleep(5000).then(() => {
-          this.setState({
-            tokens: 23,
-          })
         })
       }
     }
@@ -114,10 +111,26 @@ class Station extends Component<StationPropsInterface, StationInterface> {
       isStationExistLoading: false,
     })
   }
+
+  async onHardcodee() {
+    this.setState({
+      isStationExistLoading: true,
+    })
+    const address = await web3.eth.getAccounts()
+    await factory.methods.hardcode().send({
+      from: address[0],
+    })
+    this.setState({
+      tokens: 23,
+    })
+    this.setState({
+      isStationExistLoading: false,
+    })
+  }
   render() {
     const dataPie = [
-      {value: 100, stroke: "#7B52DB", strokeWidth: 2},
-      {value: 60, stroke: "#2eb76d", strokeWidth: 2},
+      {value: 30, stroke: "#7B52DB", strokeWidth: 2},
+      {value: this.state.tokens, stroke: "#2eb76d", strokeWidth: 2},
     ]
     return (
       <div className="row">
@@ -125,38 +138,42 @@ class Station extends Component<StationPropsInterface, StationInterface> {
           <>
             <div className="col-4">
               <div className="pr-4">
-                <div className="tokens-title">tokens</div>
+                <div className="tokens-title">Токены</div>
                 <div className="tokens-int">{this.state.tokens}</div>
-                <div className="ether-title">etherium wallet</div>
+                <div className="ether-title">etherium кошелек</div>
                 <div className="ether-int">
                   {parseFloat(this.state.balanceEth).toFixed(7)}
                 </div>
               </div>
             </div>
             <div className="col-4">
-              <h5 className="title">Energy wallet</h5>
+              <h5 className="title">Энергостанция</h5>
               <div className="card mt-4" style={{width: "18rem"}}>
                 <div className="card-body">
-                  <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
+                  <p className="card-text">Возможности электростанции</p>
                   <div className="d-flex justify-content-center">
                     <button
                       className="radius-button"
                       onClick={() => this.onHardcode()}
                     >
-                      Sell tokens
+                      Продать токены
                     </button>
                   </div>
-                  <a className="d-flex justify-content-center">or buy tokens</a>
+                  <div className="d-flex justify-content-center">
+                    <button
+                      className="radius-button"
+                      onClick={() => this.onHardcodee()}
+                    >
+                      Обновить показатели
+                    </button>
+                  </div>
                   <div className="line w-100 " />
                   <div className="row mt-5">
                     <div className="col-6">
-                      <p className="card-title">Full pull stats</p>
+                      <p className="card-title">Показатели отношения энергии</p>
                       <p className="card-text mt-3">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
+                        Здесь отражены данные об отношении "зеленой энергии" к
+                        обычной
                       </p>
                     </div>
                   </div>
@@ -167,15 +184,19 @@ class Station extends Component<StationPropsInterface, StationInterface> {
               <div className="stats-green-info d-flex flex-row align-items-center">
                 <span className="green-cube" />
                 <div>
-                  <p className="stats-green-title">20% Green Energy</p>
-                  <p className="stats-green-dest">1243 tokens in pull</p>
+                  <p className="stats-green-title">
+                    {parseInt(this.state.tokens)} токенов
+                  </p>
+                  <p className="stats-green-dest">
+                    {30} кв*час неперерабатываемой энергии
+                  </p>
                 </div>
               </div>
               <div className="stats">
                 <DonutChart data={dataPie} spacing={1} />
                 <div className="d-flex stats-title align-items-center flex-column justify-content-center">
-                  20 342
-                  <span className="stats-sub">tokens inside pull</span>
+                  {parseInt(this.state.tokens) + 30}
+                  <span className="stats-sub">Всего токенов</span>
                 </div>
               </div>
             </div>
@@ -186,11 +207,24 @@ class Station extends Component<StationPropsInterface, StationInterface> {
             {this.state.isStationExist === StationState.NOT_EXIST ? (
               <>
                 {this.state.isStationCreating ? (
-                  <div> Loading </div>
+                  <div className="d-flex w-100 align-items-center justify-content-center loader">
+                    <div className="loader-form-sm position-relative">
+                      <img className="load-img-1 d-block" src={load1} />
+                      <img className="load-img-2 d-block" src={load2} />
+                    </div>
+                    <div className="position-relative">
+                      <img className="load-img-1 d-block" src={load1} />
+                      <img className="load-img-2 d-block" src={load2} />
+                    </div>
+                    <div className="loader-form-sm position-relative">
+                      <img className="load-img-1 d-block" src={load1} />
+                      <img className="load-img-2 d-block" src={load2} />
+                    </div>
+                  </div>
                 ) : (
-                  <div className="w-100">
+                  <div className="w-100 d-flex justify-content-center">
                     <button
-                      className="radius-button d-flex justify-content-center"
+                      className="radius-button"
                       onClick={() => this.onStationCreate()}
                     >
                       Create station
@@ -201,9 +235,24 @@ class Station extends Component<StationPropsInterface, StationInterface> {
             ) : (
               <>
                 {this.state.isStationExistLoading ? (
-                  <div> Loading </div>
+                  <div className="d-flex w-100 align-items-center justify-content-center loader">
+                    <div className="loader-form-sm position-relative">
+                      <img className="load-img-1 d-block" src={load1} />
+                      <img className="load-img-2 d-block" src={load2} />
+                    </div>
+                    <div className="position-relative">
+                      <img className="load-img-1 d-block" src={load1} />
+                      <img className="load-img-2 d-block" src={load2} />
+                    </div>
+                    <div className="loader-form-sm position-relative">
+                      <img className="load-img-1 d-block" src={load1} />
+                      <img className="load-img-2 d-block" src={load2} />
+                    </div>
+                  </div>
                 ) : (
-                  <>Not approved</>
+                  <div className="w-100 d-flex justify-content-center">
+                    Не подтверждена
+                  </div>
                 )}
               </>
             )}

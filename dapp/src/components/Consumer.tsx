@@ -23,7 +23,11 @@ class Consumer extends Component<{}, ConsumerInterface> {
 
   async componentDidMount() {
     this.setState({
-      offerings: [{id: 2, tokens: 23, eth: 1}],
+      offerings: [
+        {id: 2, tokens: 23, eth: 1},
+        {id: 5, tokens: 26, eth: 1},
+        {id: 8, tokens: 29, eth: 1},
+      ],
       history: [{id: 1, tokens: 10, eth: 5}],
     })
   }
@@ -32,44 +36,37 @@ class Consumer extends Component<{}, ConsumerInterface> {
   }
   async hardCode() {
     const address = await web3.eth.getAccounts()
-    await factory.methods.hardcode().send({
-      from: address[0],
+    web3.eth
+      .sendTransaction({
+        from: address[0],
+        to: "0x522fb140e213A876aA04D300cB705866994C4bc3",
+        value: web3.utils.toWei("1", "ether"),
+      })
+      .then(() => {})
+    this.sleep(10000).then(() => {
+      this.setState({
+        offerings: [{id: 5, tokens: 26, eth: 1}, {id: 8, tokens: 29, eth: 1}],
+      })
+      this.setState({
+        history: [...this.state.history, {id: 2, tokens: 23, eth: 1}],
+      })
     })
-    this.setState({
-      offerings: [],
-    })
-    this.setState({
-      history: [...this.state.history, {id: 2, tokens: 23, eth: 1}],
-    })
+  }
+  sleep = milliseconds => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
 
   render() {
-    const loading = true;
-    return loading ? (
-      <div className="d-flex w-100 align-items-center justify-content-center loader">
-        <div className="loader-form-sm position-relative">
-          <img className="load-img-1 d-block" src={load1} />
-          <img className="load-img-2 d-block" src={load2} />
-        </div>
-        <div className="position-relative">
-          <img className="load-img-1 d-block" src={load1} />
-          <img className="load-img-2 d-block" src={load2} />
-        </div>
-        <div className="loader-form-sm position-relative">
-          <img className="load-img-1 d-block" src={load1} />
-          <img className="load-img-2 d-block" src={load2} />
-        </div>
-      </div>
-    ) : (
+    return (
       <div className="row">
         <div className="col-2 mt-5">
           <div>
-            <div className="ether-title">etherium wallet</div>
-            <div className="ether-int">{5.007}</div>
+            <div className="ether-title">etherium кошелек</div>
+            <div className="ether-int" />
           </div>
         </div>
         <div className="col-6">
-          <h5 className="title">Offerings</h5>
+          <h5 className="title">Покупка</h5>
           <div className="card-consumer mt-4">
             <div className="card-body">
               {this.state.offerings.map(offering => (
@@ -78,7 +75,7 @@ class Consumer extends Component<{}, ConsumerInterface> {
                     <div>
                       <span className="buy-token">{offering.eth + " eth"}</span>
                       <span className="green-descr ml-auto">
-                        {offering.tokens + " tokens"}
+                        {offering.tokens + " токена"}
                       </span>
                     </div>
                     <div>
@@ -86,10 +83,10 @@ class Consumer extends Component<{}, ConsumerInterface> {
                     </div>
                   </div>
                   <button
-                    onClick={() => this.onBuy(offering)}
+                    onClick={() => this.hardCode()}
                     className="ml-auto p-2 align-self-center radius-button-operator"
                   >
-                    Buy
+                    Купить
                   </button>
                 </div>
               ))}
@@ -98,7 +95,7 @@ class Consumer extends Component<{}, ConsumerInterface> {
           </div>
         </div>
         <div className="col-4 opacity">
-          <h5 className="title">History</h5>
+          <h5 className="title">История</h5>
           <div className="mt-4">
             <div className="card-body">
               {this.state.history.map(item => (
