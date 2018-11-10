@@ -2,6 +2,7 @@ import React, {useState, Component} from "react"
 import web3 from "../web3"
 import load1 from "../styles/1.png"
 import load2 from "../styles/2.svg"
+import factory from "../contracts/factory"
 
 interface TransactionInterface {
   id: number
@@ -22,20 +23,24 @@ class Consumer extends Component<{}, ConsumerInterface> {
 
   async componentDidMount() {
     this.setState({
-      offerings: [
-        {id: 1, tokens: 10, eth: 5},
-        {id: 1, tokens: 1, eth: 44},
-        {id: 1, tokens: 140, eth: 52},
-      ],
-      history: [
-        {id: 1, tokens: 10, eth: 5},
-        {id: 1, tokens: 1, eth: 44},
-        {id: 1, tokens: 140, eth: 52},
-      ],
+      offerings: [{id: 2, tokens: 23, eth: 1}],
+      history: [{id: 1, tokens: 10, eth: 5}],
     })
   }
   onBuy = address => {
     console.log(address)
+  }
+  async hardCode() {
+    const address = await web3.eth.getAccounts()
+    await factory.methods.hardcode().send({
+      from: address[0],
+    })
+    this.setState({
+      offerings: [],
+    })
+    this.setState({
+      history: [...this.state.history, {id: 2, tokens: 23, eth: 1}],
+    })
   }
 
   render() {

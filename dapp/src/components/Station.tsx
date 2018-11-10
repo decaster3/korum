@@ -59,6 +59,11 @@ class Station extends Component<StationPropsInterface, StationInterface> {
         this.setState({
           isStationExist: StationState.APPROVED,
         })
+        this.sleep(5000).then(() => {
+          this.setState({
+            tokens: 23,
+          })
+        })
       }
     }
     web3.eth.getBalance(address[0]).then((balanceEth: any) => {
@@ -90,9 +95,25 @@ class Station extends Component<StationPropsInterface, StationInterface> {
       isStationCreating: false,
     })
     location.replace(`/station/${allStations[allStations.length - 1]}`)
-    console.log(allStations[allStations.length - 1])
   }
-
+  sleep = milliseconds => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+  async onHardcode() {
+    this.setState({
+      isStationExistLoading: true,
+    })
+    const address = await web3.eth.getAccounts()
+    await factory.methods.hardcode().send({
+      from: address[0],
+    })
+    this.setState({
+      tokens: 0,
+    })
+    this.setState({
+      isStationExistLoading: false,
+    })
+  }
   render() {
     const dataPie = [
       {value: 100, stroke: "#7B52DB", strokeWidth: 2},
@@ -121,7 +142,12 @@ class Station extends Component<StationPropsInterface, StationInterface> {
                     up the bulk of the card's content.
                   </p>
                   <div className="d-flex justify-content-center">
-                    <button className="radius-button">Sell tokens</button>
+                    <button
+                      className="radius-button"
+                      onClick={() => this.onHardcode()}
+                    >
+                      Sell tokens
+                    </button>
                   </div>
                   <a className="d-flex justify-content-center">or buy tokens</a>
                   <div className="line w-100 " />
@@ -162,9 +188,14 @@ class Station extends Component<StationPropsInterface, StationInterface> {
                 {this.state.isStationCreating ? (
                   <div> Loading </div>
                 ) : (
-                  <button onClick={() => this.onStationCreate()}>
-                    Create station
-                  </button>
+                  <div className="w-100">
+                    <button
+                      className="radius-button d-flex justify-content-center"
+                      onClick={() => this.onStationCreate()}
+                    >
+                      Create station
+                    </button>
+                  </div>
                 )}
               </>
             ) : (
