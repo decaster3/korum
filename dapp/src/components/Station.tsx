@@ -108,7 +108,7 @@ class Station extends Component<StationPropsInterface, StationInterface> {
                 <div className="tokens-int">{this.state.tokens}</div>
                 <div className="ether-title">etherium wallet</div>
                 <div className="ether-int">
-                  {parseFloat(this.state.balanceEth).toFixed(7)}}
+                  {parseFloat(this.state.balanceEth).toFixed(7)}
                 </div>
               </div>
             </div>
@@ -132,41 +132,24 @@ class Station extends Component<StationPropsInterface, StationInterface> {
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
                       </p>
-                      <div className="d-flex justify-content-center">
-                        <button className="radius-button">
-                          Burn tokens for energy
-                        </button>
-                      </div>
-                      <a className="d-flex justify-content-center">
-                        or buy tokens
-                      </a>
-                      <div className="line w-100 " />
-                      <div className="row">
-                        <div className="col-6">
-                          <p className="card-text mt-5">
-                            Some quick example text to build on the card title
-                            and make up the bulk of the card's content.
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-4">
-                  <div className="stats-green-info d-flex flex-row align-items-center">
-                    <span className="green-cube" />
-                    <div>
-                      <p className="stats-green-title">20% Green Energy</p>
-                      <p className="stats-green-dest">1243 tokens in pull</p>
-                    </div>
-                  </div>
-                  <div className="stats">
-                    <DonutChart data={dataPie} spacing={1} />
-                    <div className="d-flex stats-title align-items-center flex-column justify-content-center">
-                      20 342
-                      <span className="stats-sub">tokens inside pull</span>
-                    </div>
-                  </div>
+              </div>
+            </div>
+            <div className="col-4">
+              <div className="stats-green-info d-flex flex-row align-items-center">
+                <span className="green-cube" />
+                <div>
+                  <p className="stats-green-title">20% Green Energy</p>
+                  <p className="stats-green-dest">1243 tokens in pull</p>
+                </div>
+              </div>
+              <div className="stats">
+                <DonutChart data={dataPie} spacing={1} />
+                <div className="d-flex stats-title align-items-center flex-column justify-content-center">
+                  20 342
+                  <span className="stats-sub">tokens inside pull</span>
                 </div>
               </div>
             </div>
