@@ -23,7 +23,7 @@ nav{
   box-shadow: 3px 2px 11px 0 rgba(0, 0, 0, 0.06);
 }
 .top-margin{
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .title{
   color: white;
@@ -84,6 +84,7 @@ a{
 }
 svg{
   position: absolute;
+  width: 300px;
 }
 circle:first-child{
   stroke: #9d00ff;
@@ -92,8 +93,13 @@ circle:nth-child(2n+2){
   stroke: #87e234;
 }
 .stats-title{
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
+  font-size: 37px;
+}
+.stats-sub{
+  font-size: 14px;
+  opacity: 0.5;
 }
 .ether-int{
   color: white;
@@ -109,6 +115,15 @@ circle:nth-child(2n+2){
   margin-top: 290px;
   margin-left: -150px;
   width: 300px;
+  position: absolute;
+}
+.green-cube{
+  height: 17px;
+  width: 17px;
+  background-color: #87e234;
+  border-radius: 5px;
+  margin-bottom: 22px;
+  margin-right: 10px;
 }
 .ether-int:hover{
   opacity: 1;
@@ -158,4 +173,19 @@ a:hover{
   width: 15px;
   height: 2px;
   background-color: currentColor;
+}
+.stats-green-title{
+  line-height: 15px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+}
+.stats-green-dest{
+  margin-left: 5px;
+  font-size: 14px;
+  opacity: 0.5;
+}
+.stats-green-info{
+  margin-top: 314px;
+  position: absolute;
+  margin-left: 92px;
 }
