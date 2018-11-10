@@ -1,6 +1,6 @@
 const HDWalletProvider = require("truffle-hdwallet-provider")
 const Web3 = require("web3")
-const compiledFactory = require("./build/Tokens.json")
+const compiledFactory = require("./build/Factory.json")
 
 /*
 Attempting to deploy from account 0xDb1a796F201C74Ea29BFF459bcc72F4c69C7bb97

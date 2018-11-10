@@ -4,7 +4,7 @@ contract Factory {
   address[] public deployedStations;
   address[] public stationManagers;
 
-  function createStation() public {
+  function createStation() public returns (address) {
     address newStation = new Station(msg.sender);
     deployedStations.push(newStation);
     stationManagers.push(msg.sender);
