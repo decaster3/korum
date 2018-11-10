@@ -2,6 +2,19 @@ import React, {useState, Component} from "react"
 import web3 from "../web3"
 import load1 from "../styles/1.png"
 import load2 from "../styles/2.svg"
+import Robonomics, {MessageProviderIpfsApi} from "robonomics-js"
+import ipfsApi from "ipfs-api"
+
+// const robonomics = new Robonomics({
+//   provider: new MessageProviderIpfsApi(ipfsApi()),
+// })
+
+// robonomics.ready().then(() => {
+//   console.log("robonomics js ready")
+//   console.log("xrt", robonomics.xrt.address)
+//   console.log("factory", robonomics.factory.address)
+//   console.log("lighthouse default", robonomics.lighthouse.address)
+// })
 
 interface TransactionInterface {
   id: number
