@@ -39,9 +39,9 @@ class Consumer extends Component<{}, ConsumerInterface> {
   }
 
   render() {
-    const loading = false
+    const loading = true;
     return loading ? (
-      <div className="d-flex align-items-center justify-content-center">
+      <div className="d-flex w-100 align-items-center justify-content-center loader">
         <div className="loader-form-sm position-relative">
           <img className="load-img-1 d-block" src={load1} />
           <img className="load-img-2 d-block" src={load2} />
