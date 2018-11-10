@@ -53,7 +53,8 @@ class Station extends Component<StationPropsInterface, StationInterface> {
     })
     if (this.props.match.params.id) {
       const isApprovedStation = await station(this.props.match.params.id)
-        .methods.approved
+        .methods.isApproved()
+        .call()
       if (isApprovedStation) {
         this.setState({
           isStationExist: StationState.APPROVED,
@@ -81,13 +82,15 @@ class Station extends Component<StationPropsInterface, StationInterface> {
         balanceEth: web3.utils.fromWei(balanceEth, "ether"),
       })
     })
-    const createdStationAddress = await factory.methods.createStation().send({
+    await factory.methods.createStation().send({
       from: address[0],
     })
+    const allStations = await factory.methods.getDeployedStations().call()
     this.setState({
       isStationCreating: false,
     })
-    location.replace(`/station/${createdStationAddress}`)
+    location.replace(`/station/${allStations[allStations.length - 1]}`)
+    console.log(allStations[allStations.length - 1])
   }
 
   render() {
