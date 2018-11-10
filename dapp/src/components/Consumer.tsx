@@ -39,7 +39,11 @@ class Consumer extends Component<{}, ConsumerInterface> {
   render() {
     return (
       <div className='row'>
-          <div className='col-2'>
+          <div className='col-2 mt-5'>
+              <div>
+                  <div className="ether-title">etherium wallet</div>
+                  <div className="ether-int">{5.007}</div>
+              </div>
           </div>
           <div className="col-6">
               <h5 className="title">Offerings</h5>
