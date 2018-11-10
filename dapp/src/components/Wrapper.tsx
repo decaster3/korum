@@ -5,14 +5,9 @@ const Wrapper = props => (
   <div>
     <nav className="navbar">
       <ul className="nav">
-        <li className="nav-item">
-          <div className="navbar-brand">
-            <img src={logo} width="40" height="35" alt="" />
-          </div>
-        </li>
-        <li className="nav-item d-flex align-items-center">
-          <div className="menu icon" />
-        </li>
+        <div className="navbar-brand">
+          <img src={logo} width="80" height="70" alt="" />
+        </div>
       </ul>
     </nav>
     <div className="container top-margin">{props.children}</div>

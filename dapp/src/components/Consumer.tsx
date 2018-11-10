@@ -39,66 +39,81 @@ class Consumer extends Component<{}, ConsumerInterface> {
   }
 
   render() {
-    return (
-      <div className='row'>
-          <div className='loader-form'>
-              <span className='load-img-1'><img className='img-1' src={load1}/></span>
-              <img className='load-img-2' src={load2}/>
+    const loading = false
+    return loading ? (
+      <div className="d-flex align-items-center justify-content-center">
+        <div className="loader-form-sm position-relative">
+          <img className="load-img-1 d-block" src={load1} />
+          <img className="load-img-2 d-block" src={load2} />
+        </div>
+        <div className="position-relative">
+          <img className="load-img-1 d-block" src={load1} />
+          <img className="load-img-2 d-block" src={load2} />
+        </div>
+        <div className="loader-form-sm position-relative">
+          <img className="load-img-1 d-block" src={load1} />
+          <img className="load-img-2 d-block" src={load2} />
+        </div>
+      </div>
+    ) : (
+      <div className="row">
+        <div className="col-2 mt-5">
+          <div>
+            <div className="ether-title">etherium wallet</div>
+            <div className="ether-int">{5.007}</div>
           </div>
-          <div className='loader-form-2'>
-              <span className='load-img-1'><img className='img-1' src={load1}/></span>
-              <img className='load-img-2' src={load2}/>
-          </div>
-          <div className='col-2 mt-5'>
-              <div>
-                  <div className="ether-title">etherium wallet</div>
-                  <div className="ether-int">{5.007}</div>
-              </div>
-          </div>
-          <div className="col-6">
-              <h5 className="title">Offerings</h5>
-              <div className="card-consumer mt-4">
-                  <div className="card-body">
-                      {this.state.offerings.map(offering => (
-                          <div className='d-flex flex-row wallet mb-3'>
-                              <div className='d-flex flex-column' key={offering.id}>
-                                  <div>
-                                      <span className='buy-token'>{offering.eth + ' eth'}</span>
-                                      <span className='green-descr ml-auto'>{offering.tokens + ' tokens'}</span>
-                                  </div>
-                                  <div>
-                                  <span className='descr'>12.03.2018 17:30</span>
-                                  </div>
-                              </div>
-                              <button onClick={() => this.onBuy(offering)} className='ml-auto p-2 align-self-center radius-button-operator'>Buy</button>
-                          </div>
-                      ))}
-                      <hr />
+        </div>
+        <div className="col-6">
+          <h5 className="title">Offerings</h5>
+          <div className="card-consumer mt-4">
+            <div className="card-body">
+              {this.state.offerings.map(offering => (
+                <div className="d-flex flex-row wallet mb-3">
+                  <div className="d-flex flex-column" key={offering.id}>
+                    <div>
+                      <span className="buy-token">{offering.eth + " eth"}</span>
+                      <span className="green-descr ml-auto">
+                        {offering.tokens + " tokens"}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="descr">12.03.2018 17:30</span>
+                    </div>
                   </div>
-              </div>
+                  <button
+                    onClick={() => this.onBuy(offering)}
+                    className="ml-auto p-2 align-self-center radius-button-operator"
+                  >
+                    Buy
+                  </button>
+                </div>
+              ))}
+              <hr />
+            </div>
           </div>
-          <div className='col-4 opacity'>
-              <h5 className="title">History</h5>
-              <div className="mt-4" >
-                  <div className="card-body">
-                      {this.state.history.map(item => (
-                          <div className='d-flex flex-row wallet mb-3'>
-                              <div className='d-flex flex-column' key={item.id}>
-                                  <div>
-                                      <span className='buy-token'>{item.eth + ' eth'}</span>
-                                      <span className='green-descr ml-auto'>{item.tokens + ' tokens'}</span>
-                                  </div>
-                                  <div>
-                                      <span className='descr'>12.03.2018 17:30</span>
-                                  </div>
-                              </div>
-                          </div>
-                      ))}
+        </div>
+        <div className="col-4 opacity">
+          <h5 className="title">History</h5>
+          <div className="mt-4">
+            <div className="card-body">
+              {this.state.history.map(item => (
+                <div className="d-flex flex-row wallet mb-3">
+                  <div className="d-flex flex-column" key={item.id}>
+                    <div>
+                      <span className="buy-token">{item.eth + " eth"}</span>
+                      <span className="green-descr ml-auto">
+                        {item.tokens + " tokens"}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="descr">12.03.2018 17:30</span>
+                    </div>
                   </div>
-              </div>
+                </div>
+              ))}
+            </div>
           </div>
-
-
+        </div>
       </div>
     )
   }

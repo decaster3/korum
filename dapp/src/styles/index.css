@@ -1,38 +1,38 @@
-body{
+body {
   background-image: url("bg.png");
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   color: white;
   background-size: cover;
 }
-nav{
+nav {
   background-color: rgba(255, 255, 255, 0);
   height: 100px;
 }
-.logo-img{
+.logo-img {
   padding-top: 15px;
 }
-.opacity{
+.opacity {
   opacity: 0.5;
   margin-top: 10px;
   transition: 0.5s;
 }
-.opacity:hover{
+.opacity:hover {
   opacity: 1;
   margin-top: 0;
   transition: 0.5s;
 }
-.buy-token{
+.buy-token {
   margin-right: 10px;
   font-size: 20px;
   font-weight: 700;
 }
-.icon-energy{
+.icon-energy {
   height: 30px;
   width: 30px;
 }
-.card{
+.card {
   padding-top: 50px;
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   color: white;
   background-color: rgba(28, 30, 36, 0.63) !important;
   width: 456px !important;
@@ -41,9 +41,9 @@ nav{
   padding-right: 50px;
   box-shadow: 3px 2px 11px 0 rgba(0, 0, 0, 0.06);
 }
-.card-consumer{
+.card-consumer {
   padding-top: 50px;
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   color: white;
   background-color: rgba(28, 30, 36, 0.63) !important;
   padding: 35px;
@@ -51,53 +51,64 @@ nav{
   padding-right: 10px;
   box-shadow: 3px 2px 11px 0 rgba(0, 0, 0, 0.06);
 }
-.green-descr{
+.green-descr {
   font-size: 14px;
   color: #87e234;
 }
-.load-img-1{
-  margin-left: 100px;
-  position: absolute;
-  -webkit-animation:spin 4s linear infinite;
-  -moz-animation:spin 4s linear infinite;
-  animation:spin 4s linear infinite;
-}
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-.img-1{
+.load-img-1 {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
   width: 140px;
 }
-.load-img-2{
-  margin-left: 161px;
-  margin-top: 67px;
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.load-img-2 {
+  margin-left: 61px;
+  margin-right: 61px;
+  margin-top: -67px;
   z-index: -1;
   position: absolute;
 }
-.loader-form{
-  width: 100px;
-  height: 100px;
+.loader-form-sm {
+  transform: scale(0.6);
+  margin-top: 20px;
 }
-.top-margin{
+.top-margin {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
-.title{
+.title {
   color: white;
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   font-size: 37px;
   font-weight: 400;
   position: absolute;
   z-index: 9;
 }
-.card-text{
+.card-text {
   font-size: 12px;
   opacity: 0.3;
 }
-.descr{
+.descr {
   font-size: 12px;
   opacity: 0.3;
 }
-.radius-button{
+.radius-button {
   width: 250px;
   height: 45px;
   background-color: unset;
@@ -106,9 +117,9 @@ nav{
   color: white;
   font-size: 13px;
   margin-top: 30px;
-  transition: 0.5s
+  transition: 0.5s;
 }
-.radius-button-operator{
+.radius-button-operator {
   width: 123px;
   height: 38px;
   background-color: unset;
@@ -119,28 +130,28 @@ nav{
   margin-left: 15px;
   transition: 0.5s;
 }
-button:focus{
+button:focus {
   outline: unset;
 }
-.radius-button:hover{
+.radius-button:hover {
   background-color: #87e234;
   transition: 0.5s;
   color: #292929;
   border: solid 1px rgba(0, 0, 0, 0.06);
 }
-.radius-button-operator:hover{
+.radius-button-operator:hover {
   background-color: #87e234;
   transition: 0.5s;
   color: #292929;
   border: solid 1px rgba(0, 0, 0, 0.06);
 }
-.charger-card{
+.charger-card {
   border: solid 1px rgb(52, 52, 52);
 }
-.card-operator{
+.card-operator {
   width: 400px;
   padding-top: 50px;
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   color: white;
   background-color: rgba(28, 30, 36, 0.63) !important;
   padding: 35px;
@@ -148,25 +159,25 @@ button:focus{
   padding-right: 35px;
   box-shadow: 3px 2px 11px 0 rgba(0, 0, 0, 0.06);
 }
-.wallet{
+.wallet {
   padding: 15px;
   box-shadow: 3px 8px 18px 0 rgba(0, 0, 0, 0.26);
 }
-.line{
+.line {
   height: 1px;
   opacity: 0.1;
   background-color: white;
   margin-top: 50px;
 }
-a{
+a {
   font-size: 14px;
   opacity: 0.3;
   color: white;
   margin-top: 10px;
 }
-.tokens-int{
+.tokens-int {
   color: white;
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   font-size: 70px;
   font-weight: 400;
   text-align: right;
@@ -174,44 +185,44 @@ a{
   opacity: 0.3;
   transition: 0.5s;
 }
-.tokens-int:hover{
+.tokens-int:hover {
   transition: 0.5s;
   opacity: 1;
 }
-.tokens-title{
-  font-family: 'Montserrat', Roboto;
+.tokens-title {
+  font-family: "Montserrat", Roboto;
   text-align: right;
   color: white;
   font-size: 14px;
   opacity: 0.3;
   transition: 0.5s;
 }
-.tokens-title:hover{
+.tokens-title:hover {
   transition: 0.5s;
   opacity: 1;
 }
-svg{
+svg {
   position: absolute;
   width: 300px;
 }
-circle:first-child{
+circle:first-child {
   stroke: #9d00ff;
 }
-circle:nth-child(2n+2){
+circle:nth-child(2n + 2) {
   stroke: #87e234;
 }
-.stats-title{
+.stats-title {
   width: 300px;
   height: 300px;
   font-size: 37px;
 }
-.stats-sub{
+.stats-sub {
   font-size: 14px;
   opacity: 0.5;
 }
-.ether-int{
+.ether-int {
   color: white;
-  font-family: 'Montserrat', Roboto;
+  font-family: "Montserrat", Roboto;
   font-size: 70px;
   font-weight: 400;
   text-align: right;
@@ -219,13 +230,13 @@ circle:nth-child(2n+2){
   opacity: 0.3;
   transition: 0.5s;
 }
-.stats{
+.stats {
   margin-top: 290px;
   margin-left: -150px;
   width: 300px;
   position: absolute;
 }
-.green-cube{
+.green-cube {
   height: 17px;
   width: 17px;
   background-color: #87e234;
@@ -233,7 +244,7 @@ circle:nth-child(2n+2){
   margin-bottom: 22px;
   margin-right: 10px;
 }
-.ether-int:hover{
+.ether-int:hover {
   opacity: 1;
   transition: 0.5s;
 }
@@ -241,18 +252,18 @@ circle:nth-child(2n+2){
   opacity: 1;
   transition: 0.5s;
 }
-.ether-title{
-  font-family: 'Montserrat', Roboto;
+.ether-title {
+  font-family: "Montserrat", Roboto;
   text-align: right;
   color: white;
   opacity: 0.3;
   font-size: 14px;
   margin-top: 315px;
 }
-a{
+a {
   cursor: pointer;
 }
-a:hover{
+a:hover {
   text-decoration: underline !important;
 }
 .menu.icon {
@@ -265,7 +276,7 @@ a:hover{
   background-color: currentColor;
 }
 .menu.icon:before {
-  content: '';
+  content: "";
   position: absolute;
   top: -8px;
   left: 0;
@@ -274,7 +285,7 @@ a:hover{
   background-color: currentColor;
 }
 .menu.icon:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 8px;
   left: 0;
@@ -282,17 +293,17 @@ a:hover{
   height: 2px;
   background-color: currentColor;
 }
-.stats-green-title{
+.stats-green-title {
   line-height: 15px;
   margin-bottom: 0px;
   margin-left: 5px;
 }
-.stats-green-dest{
+.stats-green-dest {
   margin-left: 5px;
   font-size: 14px;
   opacity: 0.5;
 }
-.stats-green-info{
+.stats-green-info {
   margin-top: 314px;
   position: absolute;
   margin-left: 92px;
