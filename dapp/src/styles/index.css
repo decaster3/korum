@@ -55,6 +55,29 @@ nav{
   font-size: 14px;
   color: #87e234;
 }
+.load-img-1{
+  margin-left: 100px;
+  position: absolute;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.img-1{
+  width: 140px;
+}
+.load-img-2{
+  margin-left: 161px;
+  margin-top: 67px;
+  z-index: -1;
+  position: absolute;
+}
+.loader-form{
+  width: 100px;
+  height: 100px;
+}
 .top-margin{
   margin-top: 50px;
 }

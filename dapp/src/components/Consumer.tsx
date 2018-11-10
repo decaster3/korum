@@ -1,5 +1,7 @@
 import React, {useState, Component} from "react"
 import web3 from "../web3"
+import load1 from "../styles/1.png"
+import load2 from "../styles/2.svg"
 
 interface TransactionInterface {
   id: number
@@ -39,6 +41,14 @@ class Consumer extends Component<{}, ConsumerInterface> {
   render() {
     return (
       <div className='row'>
+          <div className='loader-form'>
+              <span className='load-img-1'><img className='img-1' src={load1}/></span>
+              <img className='load-img-2' src={load2}/>
+          </div>
+          <div className='loader-form-2'>
+              <span className='load-img-1'><img className='img-1' src={load1}/></span>
+              <img className='load-img-2' src={load2}/>
+          </div>
           <div className='col-2 mt-5'>
               <div>
                   <div className="ether-title">etherium wallet</div>
