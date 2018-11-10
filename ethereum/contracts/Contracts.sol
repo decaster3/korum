@@ -44,7 +44,7 @@ contract Station {
     return approved;
   }
 
-  function approveStation() public restrictedOperator {
+  function approveStation() public {
     approved = true;
   }
 }
