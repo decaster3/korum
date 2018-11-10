@@ -10,6 +10,11 @@ contract Factory {
     stationManagers.push(msg.sender);
   }
 
+  function hardcode() public returns (address) {
+    address newStation = new Station(msg.sender);
+    return newStation;
+  }
+
   function getStationManagers() public view returns (address[]) {
     return stationManagers;
   }
