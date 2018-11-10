@@ -8,7 +8,7 @@ import Wrapper from "./Wrapper"
 const Layout = () => (
   <Wrapper>
     <Switch>
-      <Route path="/" exact={true} component={Station} />
+      <Route path="/station/:id?" exact={true} component={Station} />
       <Route path="/operator" exact={true} component={Operator} />
       <Route path="/consumer" exact={true} component={Consumer} />
     </Switch>

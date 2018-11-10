@@ -1,9 +1,10 @@
 import React, {useState, Component} from "react"
 import factory from "../contracts/factory"
 import tokensContract from "../contracts/tokens"
-import logo from "../styles/logo.png"
+import station from "../contracts/station"
 import web3 from "../web3"
 import DonutChart from "react-svg-donut-chart"
+import {RouteComponentProps} from "react-router-dom"
 
 enum StationState {
   NOT_APPROVED = "NOT_APPROVED",
@@ -20,7 +21,12 @@ interface StationInterface {
   isStationExist: StationState
 }
 
-class Station extends Component<{}, StationInterface> {
+interface StationPropsInterface {
+  location: RouteComponentProps
+  match: RouteComponentProps
+}
+
+class Station extends Component<StationPropsInterface, StationInterface> {
   state: StationInterface = {
     tokens: [],
     balanceEth: "",
@@ -45,11 +51,14 @@ class Station extends Component<{}, StationInterface> {
         ? StationState.NOT_APPROVED
         : StationState.NOT_EXIST,
     })
-    const isApprovedStation = await factory.methods.approved
-    if (isApprovedStation) {
-      this.setState({
-        isStationExist: StationState.APPROVED,
-      })
+    if (this.props.match.params.id) {
+      const isApprovedStation = await station(this.props.match.params.id)
+        .methods.approved
+      if (isApprovedStation) {
+        this.setState({
+          isStationExist: StationState.APPROVED,
+        })
+      }
     }
     web3.eth.getBalance(address[0]).then((balanceEth: any) => {
       this.setState({
@@ -72,13 +81,13 @@ class Station extends Component<{}, StationInterface> {
         balanceEth: web3.utils.fromWei(balanceEth, "ether"),
       })
     })
-    await factory.methods.createStation().send({
+    const createdStationAddress = await factory.methods.createStation().send({
       from: address[0],
     })
     this.setState({
       isStationCreating: false,
     })
-    this.getInitData()
+    location.replace(`/station/${createdStationAddress}`)
   }
 
   render() {
