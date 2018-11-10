@@ -2,7 +2,7 @@ import React, {useState, Component} from "react"
 import factory from "../contracts/factory"
 import logo from "../styles/logo.png"
 import web3 from "../web3"
-import {Doughnut} from "react-chartjs-2"
+import DonutChart from "react-svg-donut-chart"
 
 interface AppInterface {
   contracts: string[]
@@ -29,15 +29,10 @@ class App extends Component<{}, AppInterface> {
   }
 
   render() {
-    const data = {
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-          hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        },
-      ],
-    }
+    const dataPie = [
+      {value: 100, stroke: "#b72eb7"},
+      {value: 60, stroke: "#2eb76d"},
+    ]
     return (
       <div>
         <nav className="navbar">
@@ -86,7 +81,7 @@ class App extends Component<{}, AppInterface> {
                       Sell tokens for Etherium
                     </button>
                   </div>
-                  <Doughnut data={data} />
+                  <DonutChart data={dataPie} />
                 </div>
               </div>
             </div>
