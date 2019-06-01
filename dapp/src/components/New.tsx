@@ -1,7 +1,6 @@
 import React, {useState, Component} from "react"
 import {Form, Formik, FormikProps} from "formik"
 import factory from "../contracts/factory"
-import web3 from "../web3"
 
 interface NewInterface {
   errorMessage: string
@@ -20,7 +19,8 @@ class New extends Component<{}, NewInterface> {
           onSubmit={async (values, {setSubmitting}) => {
             setSubmitting(true)
             try {
-              const accounts = await web3.eth.getAccounts()
+              // @ts-ignore
+              const accounts = await window.web3.eth.getAccounts()
               await factory.methods.createContract(values.message).send({
                 from: accounts[0],
               })

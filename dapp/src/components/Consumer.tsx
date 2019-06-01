@@ -1,20 +1,25 @@
-import React, {useState, Component} from "react"
-import web3 from "../web3"
+import React, {Component} from "react"
+import {LIGHTHOUSE} from "../config"
+import getRobonomics from "../robonomics"
 import load1 from "../styles/1.png"
 import load2 from "../styles/2.svg"
-import Robonomics, {MessageProviderIpfsApi} from "robonomics-js"
 import ipfsApi from "ipfs-api"
+import {open} from "rosbag"
+import factory from "../contracts/factory"
 
-// const robonomics = new Robonomics({
-//   provider: new MessageProviderIpfsApi(ipfsApi()),
-// })
+console.log(factory)
 
-// robonomics.ready().then(() => {
-//   console.log("robonomics js ready")
-//   console.log("xrt", robonomics.xrt.address)
-//   console.log("factory", robonomics.factory.address)
-//   console.log("lighthouse default", robonomics.lighthouse.address)
-// })
+const ipfs = ipfsApi("/ip4/127.0.0.1/tcp/5001")
+
+// ipfs.files.get(
+//   "QmVpXekGgS6AawrvgRYWeSYvFGUcniN76rkZAUTnqaUyn1",
+//   (err, files) => {
+//     files.forEach(file => {
+//       console.log(file.path)
+//       console.log(file.content.toString("utf8"))
+//     })
+//   }
+// )
 
 interface TransactionInterface {
   id: number
@@ -46,13 +51,47 @@ class Consumer extends Component<{}, ConsumerInterface> {
         {id: 1, tokens: 140, eth: 52},
       ],
     })
+    this.getRobonomics()
   }
+
+  getRobonomics = async () => {
+    const robonomics = await getRobonomics(LIGHTHOUSE)
+    robonomics.ready().then(() => {
+      console.log("robonomics js ready")
+      console.log("xrt", robonomics.xrt.address)
+      console.log("factory", robonomics.factory.address)
+      console.log("lighthouse default", robonomics.lighthouse.address)
+      robonomics.getResult(msg => {
+        console.log("result", msg)
+        ipfs.files.get(msg.result, (err, files) => {
+          files.forEach(async file => {
+            console.log(file.path)
+            console.log(file.content.toString("utf8"))
+            const bag = await open(file)
+            await bag.readMessages(
+              {topics: [`/liability/eth_${msg.liability}/data`]},
+              result => {
+                // topic is the topic the data record was in
+                // in this case it will be either '/foo' or '/bar'
+                console.log(result.topic)
+
+                // message is the parsed payload
+                // this payload will likely differ based on the topic
+                console.log(result.message)
+              }
+            )
+          })
+        })
+      })
+    })
+  }
+
   onBuy = address => {
     console.log(address)
   }
 
   render() {
-    const loading = true;
+    const loading = false
     return loading ? (
       <div className="d-flex w-100 align-items-center justify-content-center loader">
         <div className="loader-form-sm position-relative">

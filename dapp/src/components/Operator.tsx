@@ -1,5 +1,4 @@
 import React, {useState, Component} from "react"
-import web3 from "../web3"
 import factory from "../contracts/factory"
 import station from "../contracts/station"
 
@@ -28,7 +27,8 @@ class Operator extends Component<{}, OperatorInterface> {
     this.setState({
       isStationsLoading: true,
     })
-    const myAddress = await web3.eth.getAccounts()
+    // @ts-ignore
+    const myAddress = await window.web3.eth.getAccounts()
     await station(address)
       .methods.approveStation()
       .send({

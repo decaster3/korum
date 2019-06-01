@@ -1,0 +1,9 @@
+export const NETWORK = 1
+export const VERSION = 3
+export const ENS = "0x905D0105A6465FE1C11B00ad10552b05b5c04E17"
+export const LIGHTHOUSE = "energyhack2018.lighthouse.3.robonomics.eth"
+export const MODEL = "QmfHQ8JtfY8dQZFMqYU9m1hQLeGAHdVtLm9iqzaVhgBo4k"
+export const OBJECTIVE = "QmcbZrAzymM5xaNR8skt7nz6j9fuPo8mttJ2HRKkMUbzb6"
+export const IPFS_PUBSUB = "https://wss.pool.aira.life" // https://github.com/vol4tim/ipfs-api-pubsub-ws
+export const TOKEN = null
+export const PRICE = 0

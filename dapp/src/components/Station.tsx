@@ -2,7 +2,6 @@ import React, {useState, Component} from "react"
 import factory from "../contracts/factory"
 import tokensContract from "../contracts/tokens"
 import station from "../contracts/station"
-import web3 from "../web3"
 import DonutChart from "react-svg-donut-chart"
 import {RouteComponentProps} from "react-router-dom"
 
@@ -43,7 +42,8 @@ class Station extends Component<StationPropsInterface, StationInterface> {
     this.setState({
       isStationExistLoading: true,
     })
-    const address = await web3.eth.getAccounts()
+    // @ts-ignore
+    const address = await window.web3.eth.getAccounts()
     const stationManagers = await factory.methods.getStationManagers().call()
     this.setState({
       isStationExistLoading: false,
@@ -61,9 +61,11 @@ class Station extends Component<StationPropsInterface, StationInterface> {
         })
       }
     }
-    web3.eth.getBalance(address[0]).then((balanceEth: any) => {
+    // @ts-ignore
+    window.web3.eth.getBalance(address[0]).then((balanceEth: any) => {
       this.setState({
-        balanceEth: web3.utils.fromWei(balanceEth, "ether"),
+        // @ts-ignore
+        balanceEth: window.web3.utils.fromWei(balanceEth, "ether"),
       })
     })
     const tokens = await tokensContract.methods.getTokens(address[0]).call()
@@ -76,10 +78,13 @@ class Station extends Component<StationPropsInterface, StationInterface> {
     this.setState({
       isStationCreating: true,
     })
-    const address = await web3.eth.getAccounts()
-    web3.eth.getBalance(address[0]).then((balanceEth: any) => {
+    // @ts-ignore
+    const address = await window.web3.eth.getAccounts()
+    // @ts-ignore
+    window.web3.eth.getBalance(address[0]).then((balanceEth: any) => {
       this.setState({
-        balanceEth: web3.utils.fromWei(balanceEth, "ether"),
+        // @ts-ignore
+        balanceEth: window.web3.utils.fromWei(balanceEth, "ether"),
       })
     })
     await factory.methods.createStation().send({
